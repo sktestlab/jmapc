@@ -1,5 +1,7 @@
 # jmapc: A [JMAP][jmapio] client library for Python
 
+## Test edit for a test PR
+
 [![PyPI](https://img.shields.io/pypi/v/jmapc)][pypi]
 [![PyPI - Python Version](https://img.shields.io/pypi/pyversions/jmapc)][pypi]
 [![Build](https://img.shields.io/github/checks-status/smkent/jmapc/master?label=build)][gh-actions]
