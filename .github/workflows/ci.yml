@@ -16,6 +16,12 @@ jobs:
       run: |
         echo "$GITHUB_CONTEXT"
 
+    - name: Dump GitHub repo context
+      env:
+        GITHUB_CONTEXT: ${{ toJson(github.repository) }}
+      run: |
+        echo "$GITHUB_CONTEXT"
+
     - name: Dump repo fork variable
       env:
         GITHUB_CONTEXT: ${{ github.repository.fork }}
