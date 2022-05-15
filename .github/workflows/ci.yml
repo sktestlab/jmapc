@@ -2,6 +2,7 @@
 name: CI
 
 on:
+  pull_request:
   push:
   workflow_dispatch:
 
@@ -13,6 +14,9 @@ jobs:
       ENABLE_PYPI_PUBLISH: true
       ENABLE_TEST_PYPI_PUBLISH: true
       ENABLE_COVERAGE: true
+
+    # Exclude duplicative pull_request build on the parent repository
+    if: github.event_name != 'pull_request' || github.event.repository.fork
 
     strategy:
       matrix:
