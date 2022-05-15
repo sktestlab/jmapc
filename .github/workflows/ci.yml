@@ -6,34 +6,6 @@ on:
   workflow_dispatch:
 
 jobs:
-  print-event-payload:
-    name: Log event payload
-    runs-on: ubuntu-latest
-    steps:
-    - name: Dump GitHub context
-      env:
-        GITHUB_CONTEXT: ${{ toJson(github) }}
-      run: |
-        echo "$GITHUB_CONTEXT"
-
-    - name: Dump GitHub event context
-      env:
-        GITHUB_CONTEXT: ${{ toJson(github.event.repository) }}
-      run: |
-        echo "$GITHUB_CONTEXT"
-
-    - name: Dump GitHub repo context
-      env:
-        GITHUB_CONTEXT: ${{ toJson(github.event.repository) }}
-      run: |
-        echo "$GITHUB_CONTEXT"
-
-    - name: Dump repo fork variable
-      env:
-        GITHUB_CONTEXT: ${{ github.event.repository.fork }}
-      run: |
-        echo "$GITHUB_CONTEXT"
-
   build-test-publish:
     name: Python ${{ matrix.python-version }}, Poetry ${{ matrix.poetry-version }}
     runs-on: ubuntu-latest
