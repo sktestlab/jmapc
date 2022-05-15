@@ -6,6 +6,16 @@ on:
   workflow_dispatch:
 
 jobs:
+  print-event-payload:
+    name: Log event payload
+    runs-on: ubuntu-latest
+    steps:
+    - name: Dump GitHub context
+      env:
+        GITHUB_CONTEXT: ${{ toJson(github) }}
+      run: |
+        echo "$GITHUB_CONTEXT"
+
   build-test-publish:
     name: Python ${{ matrix.python-version }}, Poetry ${{ matrix.poetry-version }}
     runs-on: ubuntu-latest
@@ -49,7 +59,9 @@ jobs:
           fail_ci_if_error: true
 
       - name: 📦 Build package
-        if: env.ENABLE_PYPI_PUBLISH
+        if: |
+          !github.repository.fork
+          && env.ENABLE_PYPI_PUBLISH
         run: poetry build
 
       - name: 🔼 Publish to Test PyPI
