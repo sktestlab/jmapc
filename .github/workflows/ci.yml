@@ -16,6 +16,12 @@ jobs:
       run: |
         echo "$GITHUB_CONTEXT"
 
+    - name: Dump repo fork variable
+      env:
+        GITHUB_CONTEXT: ${{ github.repository.fork }}
+      run: |
+        echo "$GITHUB_CONTEXT"
+
   build-test-publish:
     name: Python ${{ matrix.python-version }}, Poetry ${{ matrix.poetry-version }}
     runs-on: ubuntu-latest
